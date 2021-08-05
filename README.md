@@ -34,5 +34,8 @@ The completion of this project will require the following tool:
 
 ## Data
 
-The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied to the left leg of the participants while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera.
+The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera. Each participant completed 2 runs of 8 painful trials, resulting to 797 observations (after removing data with movement artefacs). 
+
+Illustration of the experimental paradigme.
+(insert figure)
 

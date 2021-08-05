@@ -28,6 +28,7 @@ The completion of this project will require the following tool:
    * Nibabel: to load the fMRI contrast images (from .hdr files to Nifti objects)
    * Scikit-learn: for machine learning stuff
    * Nilearn: to extract and to visualize the fMRI data
+   * Matplotlib and seaborn: to plot some figures
 * The analysis will be run on **compute canada**
 * The python scripts and figures will be added to the **github** repository 
 

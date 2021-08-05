@@ -29,7 +29,7 @@ The completion of this project will require the following tool:
    * Scikit-learn: for machine learning stuff
    * Nilearn: to extract and to visualize the fMRI data
 * The analysis will be run on **compute canada**
-* The scripts will be added to the **github** repository 
+* The python scripts and figures will be added to the **github** repository 
 
 ## Data
 

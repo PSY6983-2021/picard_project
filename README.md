@@ -16,7 +16,7 @@ I'm also interested in the different methods used to analyze neuroimaging data.
 
 ## Background
 
-Facial expression of pain is an important non-verbal informative element of communication, signaling an immediate threat and a need for help. Facial movements related to the experience of pain are associated not only with the sensory dimension of pain (i.e., pain intensity) but also with its affective dimension (i.e., the unpleasantness of pain). The facial expression can be measured with the Facial Action Coding System (FACS, Ekman & Friesen, 1978), which is based on the possible action of muscles or groups of muscles, called action units. From the activity of these action units, we can compute a composite score (FACS score) taking into account the frequency and the intensity of the contraction of these action units. 
+Facial expression of pain is an important non-verbal informative element of communication, signaling an immediate threat and a need for help. Facial movements related to the experience of pain are associated not only with the sensory dimension of pain (i.e., pain intensity) but also with its affective dimension (i.e., the unpleasantness of pain). The facial expression can be measured with the Facial Action Coding System (FACS, Ekman & Friesen, 1978), which is based on the possible action of muscles or groups of muscles, called action units. We can compute a composite score (FACS score) taking into account the frequency and the intensity of the contraction of these action units. 
 
 ## Tools
 
@@ -32,3 +32,6 @@ The completion of this project will require the following tool:
 * The scripts will be added to the **github** repository 
 
 ## Data
+
+The dataset includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied to the left leg of the participants while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera.
+

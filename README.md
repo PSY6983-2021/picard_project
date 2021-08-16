@@ -20,6 +20,12 @@ I'm also interested in the different methods used to analyze neuroimaging data.
 
 Facial expression of pain is an important non-verbal informative element of communication, signaling an immediate threat and a need for help. Facial movements related to the experience of pain are associated not only with the sensory dimension of pain (i.e., pain intensity) but also with its affective dimension (i.e., the unpleasantness of pain). The facial expression can be measured with the Facial Action Coding System (FACS, Ekman & Friesen, 1978), which is based on the possible action of muscles or groups of muscles, called action units. We can compute a composite score (FACS score) taking into account the frequency and the intensity of the contraction of these action units. 
 
+**Personal goals**
+* Apply machine learning to neuroimaging data
+* Learn visualization tools
+* Improve my coding skills
+* Learn how to run analysis on compute canada and don't be afraid of it
+
 ## Tools
 
 The completion of this project will require the following tool: 
@@ -47,10 +53,14 @@ By the end of this course, I will provide
 * python scripts for:
    - [ ] Prepping the dataset for the analysis
    - [ ] Machine learning pipeline
+* jupyter notebook for:
    - [ ] Visualizing the results
 * Static and interactive visualizations of the results
 * MarkDown README.md documenting all important information about the project
+* Github repository containing the scripts, graphs, report and relevant information
 
 # Results
 
 Coming soon... :crossed_fingers:
+
+# References

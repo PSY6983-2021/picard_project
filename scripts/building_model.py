@@ -86,10 +86,10 @@ def compute_metrics(y_test, y_pred, df, fold, print_verbose):
     ----------
     df_metrics: dataFrame containing the different metrics
     """  
-    r2 = round(r2_score(y_test, y_pred),2)
-    mae = round(mean_absolute_error(y_test, y_pred),2)
-    mse = round(mean_squared_error(y_test, y_pred), 2)
-    rmse = round(np.sqrt(mean_squared_error(y_test, y_pred)), 2)
+    r2 = r2_score(y_test, y_pred)
+    mae = mean_absolute_error(y_test, y_pred)
+    mse = mean_squared_error(y_test, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     
     df.loc[fold] = [r2, mae, mse, rmse]
     if print_verbose:

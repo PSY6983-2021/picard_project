@@ -67,9 +67,15 @@ By the end of this course, I will provide
 
 # Results
 
-Coming soon... :crossed_fingers:
+## Overview
 
-# References
+## LASSO-PCR models
+
+## Conclusion
+
+## Acknowledgement
+
+## References
 
 Ekman, P. et Friesen, W. V. (1978). Facial action coding systems. Consulting Psychologists Press.
 

@@ -1,8 +1,3 @@
-
-#import pandas as pd
-#import seaborn as sns
-#import matplotlib.pyplot as plt
-
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
@@ -148,8 +143,7 @@ def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random
     #Initialize the variables
     y_pred = []
     model = []
-    #model_voxel = []
-    #intercept = []
+    model_voxel = []
     df_metrics = pd.DataFrame(columns=["r2", "mae", "mse", "rmse"])
 
     #Strategy to split the data
@@ -172,11 +166,11 @@ def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random
         ###Scores###
         df_metrics = compute_metrics(y_test[i], y_pred[i], df_metrics, i, print_verbose)
 
-        #model_voxel.append(model[i][0].inverse_transform(model[i][1].coef_))
+        model_voxel.append(model[i][0].inverse_transform(model[i][1].coef_))
 
     df_metrics.to_csv("dataframe_metrics.csv")
 
-    return X_train, y_train, X_test, y_test, y_pred, model
+    return X_train, y_train, X_test, y_test, y_pred, model, model_voxel
 
 
 def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
@@ -236,7 +230,7 @@ def boostrap_test(X, y, gr, splits=5, test_size=0.30, n_components=0.80, n_resam
         y_resampled = y[value_resampled]
         gr_resampled = gr[value_resampled]
 	         
-        _, _, _, _, _, model = train_test_model(X_resampled, y_resampled, gr_resampled, splits=splits,test_size=test_size, n_components=n_components, random_seed=random_seed, print_verbose=False)
+        _, _, _, _, _, model, model_voxel = train_test_model(X_resampled, y_resampled, gr_resampled, splits=splits,test_size=test_size, n_components=n_components, random_seed=random_seed, print_verbose=False)
         resampling_coef.extend(model)
     
     #Need to add the calculation of the p-value

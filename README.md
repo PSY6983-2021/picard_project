@@ -1,4 +1,4 @@
-# Picard_Marie-Eve_project
+# Predicting facial expression of pain in healthy adults from fMRI data
 
 ![Cover-Image](images/cover.png)
 

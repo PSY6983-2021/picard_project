@@ -57,7 +57,7 @@ Illustration of the experimental paradigme.
 
 By the end of this course, I will provide 
 * python scripts for:
-   - [ ] Prepping the dataset for the analysis
+   - [X] Prepping the dataset for the analysis
    - [ ] Machine learning pipeline
 * jupyter notebook for:
    - [ ] Visualizing the results

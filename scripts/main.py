@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-#sudo mount -t drvfs D: /mnt/d
 # ./main.py --path "data_FEPS.json" --seed 42
 
 import json
@@ -34,7 +33,15 @@ def main():
     masker, X = prepping_data.extract_signal(array_feps, mask="template", standardize = True)
 
     #Compute the model
-    X_train, y_train, X_test, y_test, y_pred, model = building_model.train_test_model(X, y, gr)
+    X_train, y_train, X_test, y_test, y_pred, model, model_voxel = building_model.train_test_model(X, y, gr)
+    
+    for i, element in enumerate(model_voxel):
+        (masker.inverse_transform(element)).to_filename("coefs_"+str(i)+".nii.gz")
+    
+    model_to_averaged = model_voxel.copy()
+    model_averaged = sum(model_to_averaged)/len(model_to_averaged)
+    (masker.inverse_transform(model_averag
+    
     for i in range(len(X_train)):
         filename = "train_test_"+str(i)+".npz"
         np.savez(filename, X_train=X_train[i],y_train=y_train[i],X_test=X_test[i],y_test=y_test[i],y_pred=y_pred[i])
@@ -44,7 +51,6 @@ def main():
     pickle_out = open(filename_model,"wb")
     pickle.dump(model, pickle_out)
     pickle_out.close()
-    
 
     #Compute permutation tests
     score, perm_scores, pvalue = building_model.compute_permutation(X, y, gr, n_permutations=3)

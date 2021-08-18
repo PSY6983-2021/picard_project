@@ -20,7 +20,7 @@ def hdr_to_Nifti(files):
     """
     array = []
     for element in files:
-        array = np.append(array, nib.load("/mnt/d/Im_Exp_Kunz/"+element))
+        array = np.append(array, nib.load(element))
 
     print('array size: ', array.shape, '\narray type: ', type(array))
 

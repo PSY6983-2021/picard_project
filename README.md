@@ -1,6 +1,6 @@
 # Predicting facial expression of pain in healthy adults from fMRI data
 
-![Cover-Image](images/cover.png)
+![Cover-Image](images/cover-image.png)
 
 ## Summary
 

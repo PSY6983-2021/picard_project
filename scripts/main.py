@@ -6,7 +6,6 @@ import json
 import pickle
 import prepping_data
 import building_model
-import metrics_feps
 import numpy as np
 import nibabel as nib
 from argparse import ArgumentParser

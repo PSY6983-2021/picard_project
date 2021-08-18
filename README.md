@@ -25,7 +25,7 @@ Facial expression of pain is an important non-verbal informative element of comm
 **Personal goals**
 * Apply machine learning to neuroimaging data
 * Learn visualization tools
-* Improve my coding skills
+* Improve my coding skills :heavy_check_mark::heavy_check_mark:
 * Learn how to run analysis on compute canada and don't be afraid of it
 
 ## Tools
@@ -72,6 +72,7 @@ By the end of this course, I will provide
 ## Conclusion
 
 ## Acknowledgement
+
 
 ## References
 

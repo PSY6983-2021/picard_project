@@ -161,7 +161,6 @@ def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random
         print("Training model")
         model_lasso_pcr = LASSO_PCR(n_components)
         model.append(model_lasso_pcr.fit(X_train[i], y_train[i]))
-        #intercept.append(model[i][1].intercept_) 
         y_pred.append(model[i].predict(X_test[i]))
         ###Scores###
         df_metrics = compute_metrics(y_test[i], y_pred[i], df_metrics, i, print_verbose)
@@ -196,7 +195,7 @@ def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scorin
     See also scikit-learn permutation_test_score documentation
     """
     cv = GroupShuffleSplit(n_splits = 5, test_size = 0.3, random_state = random_seed)
-    score, perm_scores, pvalue = permutation_test_score(estimator=LASSO_PCR(n_components), X=X, y=y, groups= gr, scoring=scoring, cv=cv, n_permutations=n_permutations, random_state=42, n_jobs=-1)
+    score, perm_scores, pvalue = permutation_test_score(estimator=LASSO_PCR(n_components), X=X, y=y, groups= gr, scoring=scoring, cv=cv, n_permutations=n_permutations, random_state=42)
     
     return score, perm_scores, pvalue
 
@@ -225,14 +224,12 @@ def boostrap_test(X, y, gr, splits=5, test_size=0.30, n_components=0.80, n_resam
         value_resampled = []
         #Create new sample
         for _ in range(len(X)):
-	        value_resampled.append(randint(0, len(X)-1))
+	    value_resampled.append(randint(0, len(X)-1))
         X_resampled = X[value_resampled,:]
         y_resampled = y[value_resampled]
         gr_resampled = gr[value_resampled]
 	         
         _, _, _, _, _, model, model_voxel = train_test_model(X_resampled, y_resampled, gr_resampled, splits=splits,test_size=test_size, n_components=n_components, random_seed=random_seed, print_verbose=False)
         resampling_coef.extend(model)
-    
-    #Need to add the calculation of the p-value
     
     return resampling_coef

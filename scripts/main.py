@@ -31,6 +31,22 @@ def main():
     #Convert fmri files to Nifti-like objects
     array_feps = prepping_data.hdr_to_Nifti(data_feps["data"])
     #Extract signal from gray matter
+    if args.model == "whole-brain":
+        masker, extract_X = prepping_data.extract_signal(array_feps, mask="template", standardize = True)
+    elif args.model == "M1":
+        mask_M1 = nib.load("mask_BA4.nii")
+        extract_X = prepping_data.extract_signal_from_mask(array_feps, mask_M1)
+    elif args.model == "without M1":
+        mask_NoM1 = nib.load("mask_excluding_BA4.nii")
+        extract_X = prepping_data.extract_signal_from_mask(array_feps, mask_NoM1)
+    
+    #Standardize the signal
+    stand_X = StandardScaler().fit_transform(extract_X.T)
+    X = stand_X.T
+    
+    #Compute the model
+    X_train, y_train, X_test, y_test, y_pred, model, model_voxel = building_model.train_test_model(X, y, gr)
+
     if args.model == "whole-brain" :
         for i, element in enumerate(model_voxel):
             (masker.inverse_transform(element)).to_filename(f"coefs_whole_brain_{i}.nii.gz")

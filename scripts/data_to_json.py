@@ -18,9 +18,9 @@ def read_files(filesInput = None):
     path, dirs, files = next(os.walk(filesInput))
 
     files_hdr = list()
-    for i in range(len(files)):
-        if files[i][-3:] == "hdr":
-            files_hdr.append(path + "//" + files[i])
+    for file in files:
+        if file[-3:] == "hdr":
+            files_hdr.append(path + "//" + file)
     
     files_hdr.sort(reverse=True)
     files_hdr.sort()

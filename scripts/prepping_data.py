@@ -82,6 +82,18 @@ def extract_signal(data, mask="template", standardize = True):
 
 def extract_signal_from_mask(data, mask):
     """
+    Apply a pre-computed mask to extract the signal from the data
+
+    Parameters
+    ----------
+    data: Niimg-like object
+    mask: mask to apply to the data
+
+    Returns
+    ----------
+    signal: extracted signal from mask
+
+    See also nilearn masking documentation
     """
     affine = data[0].affine
     resample_mask = resample_img(mask,affine)

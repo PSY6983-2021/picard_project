@@ -127,7 +127,7 @@ def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random
     splits: number of split for the cross-validation 
     test_size: percentage of the data in the test set
     n_components: number of components to keep for the PCA
-    random_seed: controls the randomness of the train/test splits. 
+    random_seed: controls the randomness of the train/test splits
     print_verbose: either or not the verbose is printed
 
     Returns
@@ -185,6 +185,7 @@ def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scorin
     n_components: number of components to keep for the PCA
     n_permutations: number of permuted iteration
     scoring: scoring strategy
+    random_seed: controls the randomness
 
     Returns
     ----------
@@ -211,6 +212,7 @@ def boostrap_test(X, y, gr, splits=5, test_size=0.30, n_components=0.80, n_resam
     test_size: percentage of the data in the test set
     n_components: number of components to keep for the PCA
     n_resampling: number of samples with replacement
+    random_seed: controls the randomness
 
     Returns
     ----------

@@ -5,8 +5,9 @@ from random import seed
 from random import randint
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
-from sklearn.linear_model import Lasso
-from sklearn.model_selection import cross_val_predict, cross_val_score, train_test_split, GroupShuffleSplit, permutation_test_score
+from sklearn.linear_model import Lasso, Ridge
+from sklearn.svm import SVR
+from sklearn.model_selection import train_test_split, GroupShuffleSplit, permutation_test_score
 from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, explained_variance_score
 
 
@@ -98,7 +99,7 @@ def compute_metrics(y_test, y_pred, df, fold, print_verbose):
     return df
 
 
-def LASSO_PCR(n_component):
+def reg_PCA(n_component, reg = Lasso()):
     """
     Parameters
     ----------
@@ -108,22 +109,23 @@ def LASSO_PCR(n_component):
     ----------
     pipe: pipeline to apply PCA and Lasso regression sequentially
     """
-    estimators = [('reduce_dim', PCA(n_component)), ('clf', Lasso())] 
+    estimators = [('reduce_dim', PCA(n_component)), ('clf', reg)] 
     pipe = Pipeline(estimators)
     return pipe
 
 
-def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
+def train_test_model(X, y, gr, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
 
     """
-    Build and evaluate the LASSO-PCR model
-    First compute the PCA and then fit the LASSO regression on the PCs scores
+    Build and evaluate the regression model
+    First compute the PCA and then fit the regression technique specified on the PCs scores
 
     Parameters
     ----------
     X: predictive variable
     y: predicted variable
     gr: grouping variable
+    reg: regression technique to perform
     splits: number of split for the cross-validation 
     test_size: percentage of the data in the test set
     n_components: number of components to keep for the PCA
@@ -159,8 +161,8 @@ def train_test_model(X, y, gr, splits=5,test_size=0.3, n_components=0.80, random
         ###Build and test the model###
         print("----------------------------")
         print("Training model")
-        model_lasso_pcr = LASSO_PCR(n_components)
-        model.append(model_lasso_pcr.fit(X_train[i], y_train[i]))
+        model_reg = reg_PCA(n_components,reg=reg)
+        model.append(model_reg.fit(X_train[i], y_train[i]))
         y_pred.append(model[i].predict(X_test[i]))
         ###Scores###
         df_metrics = compute_metrics(y_test[i], y_pred[i], df_metrics, i, print_verbose)

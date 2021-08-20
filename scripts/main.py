@@ -9,6 +9,9 @@ import building_model
 import numpy as np
 import nibabel as nib
 from nilearn.masking import unmask
+from sklearn.linear_model import Lasso, Ridge
+from sklearn.svm import SVR
+from sklearn.preprocessing import StandardScaler
 from argparse import ArgumentParser
 
 def main():
@@ -16,6 +19,7 @@ def main():
     parser.add_argument("--path", type=str)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--model", type=str, choices=["whole-brain","M1","without M1"], default="whole-brain")
+    parser.add_argument("--reg", type=str, choices=['lasso','ridge','svr'], default='lasso')
     args = parser.parse_args()
 
     #Loading the dataset
@@ -45,7 +49,14 @@ def main():
     X = stand_X.T
     
     #Compute the model
-    X_train, y_train, X_test, y_test, y_pred, model, model_voxel = building_model.train_test_model(X, y, gr)
+    if args.reg == "lasso":
+        reg = Lasso()
+    elif args.reg == "ridge":
+        reg = Ridge()
+    elif args.reg == "svr":
+        reg = SVR(kernel="linear")
+    
+    X_train, y_train, X_test, y_test, y_pred, model, model_voxel = building_model.train_test_model(X, y, gr,reg=reg)
 
     if args.model == "whole-brain" :
         for i, element in enumerate(model_voxel):

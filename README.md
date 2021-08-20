@@ -67,11 +67,9 @@ By the end of this course, I will provide
 
 ## Overview
 
-## LASSO-PCR models
+## Regression models
 
-<p align="center">
-<img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/performance_LASSO.png" width="500" height="600" />
-</p>
+
 
 ## Conclusion
 

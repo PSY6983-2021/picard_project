@@ -58,7 +58,7 @@ By the end of this course, I will provide
    - [X] Prepping the dataset for the analysis
    - [X] Machine learning pipeline
 * jupyter notebook for:
-   - [ ] Visualizing the results
+   - [X] Visualizing the results
 * Static and interactive visualizations of the results
 * MarkDown README.md documenting all important information about the project
 * Github repository containing the scripts, graphs, report and relevant information

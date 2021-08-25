@@ -70,7 +70,7 @@ By the end of this course, I will provide
 ### Deliverables
 
 **Python scripts**
-Four python scripts can be found in the [scripts folder](https://github.com/PSY6983-2021/picard_project/tree/main/scripts):
+<br> Four python scripts can be found in the [scripts folder](https://github.com/PSY6983-2021/picard_project/tree/main/scripts):
 * [main.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/main.py) : main script calling functions in prepping_data.py and building_model.py. This script also includes code to save the train and test sets (in numpy format), the coefficients of the regression model (in nii.gz format), the model (in pickle format), the output of the permutation test (in json format) and the bootstrap test (in pickle format).
 * [data_to_json.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/data_to_json.py) : script to save the fmri data (predictive variable), the target variable (predicted variable) and the group variable (for non iid data: multiple observations per participant, optional) in json format.
 * [prepping_data.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/prepping_data.py) : script to load data in Nifti-like format and to extract the signal according to a nilearn pre-defined mask or to a pre-computed mask.
@@ -79,10 +79,10 @@ Four python scripts can be found in the [scripts folder](https://github.com/PSY6
 The requirements to run the python scripts can also found in the [scripts folder](https://github.com/PSY6983-2021/picard_project/tree/main/scripts) in the [requirements.txt](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/requirements.txt) file. See also the [scripts_instruction.txt](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/scripts_instruction.txt) for more details.
 
 **Jupyter notebook**
-The jupyter notebook containing the script to generate the figures can be found in the [notebook folder](https://github.com/PSY6983-2021/picard_project/tree/main/notebook).
+<br> The jupyter notebook containing the script to generate the figures can be found in the [notebook folder](https://github.com/PSY6983-2021/picard_project/tree/main/notebook).
 
 **Visualization of the results**
-The png/html format of the figures generated in this project can be found in the [images/output subfolder](https://github.com/PSY6983-2021/picard_project/tree/main/images/output).
+<br> The png/html format of the figures generated in this project can be found in the [images/output subfolder](https://github.com/PSY6983-2021/picard_project/tree/main/images/output).
 
 ## Regression models
 

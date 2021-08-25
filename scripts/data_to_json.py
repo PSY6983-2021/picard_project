@@ -1,7 +1,6 @@
 import json
 import os
 
-
 def read_files(filesInput = None):
     """
     Load all functional files into Nifti format
@@ -28,7 +27,7 @@ def read_files(filesInput = None):
     return files_hdr
 
 
-def check_order(dataframe, column, filenames, delimiter="//", extension=".hdr"):
+def check_order(dataframe, column, filenames, extension=".hdr"):
     """
     Check if the order of the fMRI files match the one in the
     behavioral file.
@@ -38,8 +37,6 @@ def check_order(dataframe, column, filenames, delimiter="//", extension=".hdr"):
     dataframe (pandas dataFrame) : behavioral dataframe
     column (String): name of the column containing the participants' ID
     filenames (list): list of paths where the fMRI data can be found
-    delimiter (String): delimiter used to delimite the ID of the participants
-                in fMRI file name
     extension (String): extension of the fMRI files
     
     Returns
@@ -47,12 +44,12 @@ def check_order(dataframe, column, filenames, delimiter="//", extension=".hdr"):
     order: either or not the behavioral file and the functional images are in the same order (boolean)
     """
     order = True
-    idx_delimiter = filenames[0].find("//")
-    idx_delimiter += len(delimiter)
     
-    for i in range(len(filenames)):
-        if filenames[i][idx_delimiter:(len(filenames[i])-len(extension))] != dataframe[column][i]:
+    for i, filename in enumerate(filenames):
+        if os.path.basename(filename[:-len(extension)]) != dataframe[column][i]:
             print("Error in the files order")
+            print(os.path.basename(filename[:-len(extension)]))
+            print(dataframe[column][i])
             order=False
             break
             

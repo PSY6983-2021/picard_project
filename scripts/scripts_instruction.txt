@@ -1,1 +1,3 @@
+To use the main.py script, the data need to be in a dictionary format. If they are not already in a dictionary format, please check the data_to_json.py script.  
 
+If you have any questions about the scripts and the project in general, please contact me at marie-eve.picard.2@umontreal.ca. 

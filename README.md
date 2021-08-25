@@ -46,7 +46,7 @@ The completion of this project will require the following tool:
 
 The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera. Each participant completed 2 runs of 8 painful trials, resulting to 797 observations (after removing data with movement artefacs). 
 
-Illustration of the experimental paradigme.
+*Illustration of the experimental paradigme.*
 <p align="center">
 <img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/exp_paradigme.png" width="300px"/>
 </p>
@@ -86,7 +86,16 @@ The requirements to run the python scripts can also found in the [scripts folder
 
 ## Regression models
 
+## Classifier model
 
+A SVM classifier was run to see if it is possible to predict which dataset the fMRI data came from. The classifier was able to predict the dataset with an accuracy of 84.2 ± 1.6 %. 
+
+*Confusion matrices across the 5-fold cross-validation.* 
+<p align="center">
+<img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/output/confusion_matrices_across_fold.png" width="800px"/>
+</p>
+
+This result possibly highlights that the fMRI data in the two datasets come from different distributions. This might be due the different parameters used to acquire the fMRI data. The only divergent acquisition parameters were the number of whole-brain volumes acquired during each functional scan (170 volumes vs 160 volumes) and the voxel sizes (3.44 x 3.44 x 3.40 mm vs 3.4 x 3.4 x 3.4 mm). The averaged age of the participants was also different between the datasets (23.4 ± 2.5 years vs 36.0 ± 10.9 years). This age difference may have contributed to the high classification accuracy, although there is no clear evidence to support a difference in brain activity related to facial expression of pain according to different age groups in the litterature. 
 
 ## Conclusion
 

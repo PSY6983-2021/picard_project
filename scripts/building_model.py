@@ -7,11 +7,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.svm import SVR
-from sklearn.model_selection import train_test_split, GroupShuffleSplit, permutation_test_score
+from sklearn.model_selection import train_test_split, GroupShuffleSplit, ShuffleSplit, permutation_test_score
 from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, explained_variance_score
 
 
-def split_data(X,Y,group,procedure):
+def split_data(X,Y,group=None,procedure):
     """
     Split the data according to the group parameters
     to ensure that the train and test sets are completely independent
@@ -114,7 +114,7 @@ def reg_PCA(n_component, reg = Lasso()):
     return pipe
 
 
-def train_test_model(X, y, gr, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
+def train_test_model(X, y, gr=None, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
 
     """
     Build and evaluate the regression model
@@ -149,10 +149,13 @@ def train_test_model(X, y, gr, reg=Lasso(), splits=5,test_size=0.3, n_components
     df_metrics = pd.DataFrame(columns=["r2", "mae", "mse", "rmse"])
 
     #Strategy to split the data
-    group_Shuffle = GroupShuffleSplit(n_splits = splits, test_size = test_size, random_state = random_seed)
+    if gr == None:
+        shuffle_method = ShuffleSplit(n_splits = splits, test_size = test_size, random_state = random_seed)
+        X_train, X_test, y_train, y_test = split_data(X, y, procedure=shuffle_method)
+    else: 
+    	shuffle_method = GroupShuffleSplit(n_splits = splits, test_size = test_size, random_state = random_seed)  
+    	X_train, X_test, y_train, y_test = split_data(X, y, gr, shuffle_method)
 
-    #Split the data     
-    X_train, X_test, y_train, y_test = split_data(X, y, gr, group_Shuffle)
     if print_verbose:
         verbose(splits, X_train, X_test, y_train, y_test, X_verbose = True, y_verbose = True)
 
@@ -174,7 +177,49 @@ def train_test_model(X, y, gr, reg=Lasso(), splits=5,test_size=0.3, n_components
     return X_train, y_train, X_test, y_test, y_pred, model, model_voxel
 
 
-def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
+def train_test_classify(X, y, gr=None, C=1.0):
+    """
+    Parameters
+    ----------
+    X: predictive variable
+    y: predicted variable (binary variable)
+    gr: grouping variable
+    C: regularization parameter
+
+    Returns
+    ----------
+    model: list containing the classifier model for each fold
+    accuracy: list containing the classifier accuracy across the folds
+
+    See also scikit-learn SVC documentation
+    """
+    #Initialize the variables
+    y_pred = []
+    model = []
+    accuracy = []
+
+    #Strategy to split the data
+    if gr == None:
+        shuffle_method = ShuffleSplit(n_splits = splits, test_size = test_size, random_state = random_seed)    
+        X_train, X_test, y_train, y_test = split_data(X, y, shuffle_method)
+    else:
+        shuffle_method = GroupShuffleSplit(n_splits = splits, test_size = test_size, random_state = random_seed)    
+        X_train, X_test, y_train, y_test = split_data(X, y, gr, shuffle_method)
+
+    for i in range(splits):
+        ###Build and test the model###
+        print("----------------------------")
+        print("Training model")
+        model_clf = SVC(C=C, kernel="linear")
+        model.append(model_clf.fit(X_train[i], y_train[i]))
+        y_pred.append(model[i].predict(X_test[i]))
+        ###Scores###
+        accuracy.append(accuracy_score(y_test, y_pred))
+
+    return X_train, y_train, X_test, y_test, y_pred, model, accuracy
+
+
+def compute_permutation(X, y, gr=None, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
     """
     Compute the permutation test for a specified metric (r2 by default)
     Apply the PCA after the splitting procedure
@@ -197,13 +242,17 @@ def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scorin
 
     See also scikit-learn permutation_test_score documentation
     """
-    cv = GroupShuffleSplit(n_splits = 5, test_size = 0.3, random_state = random_seed)
+    if gr == None:
+        cv = ShuffleSplit(n_splits = 5, test_size = 0.3, random_state = random_seed)
+    else:    
+        cv = GroupShuffleSplit(n_splits = 5, test_size = 0.3, random_state = random_seed)
+    
     score, perm_scores, pvalue = permutation_test_score(estimator=LASSO_PCR(n_components), X=X, y=y, groups= gr, scoring=scoring, cv=cv, n_permutations=n_permutations, random_state=42)
     
     return score, perm_scores, pvalue
 
 
-def boostrap_test(X, y, gr, splits=5, test_size=0.30, n_components=0.80, n_resampling=5000, random_seed=42):
+def boostrap_test(X, y, gr=None, splits=5, test_size=0.30, n_components=0.80, n_resampling=5000, random_seed=42):
     """
     Parameters
     ----------
@@ -231,7 +280,10 @@ def boostrap_test(X, y, gr, splits=5, test_size=0.30, n_components=0.80, n_resam
 	    value_resampled.append(randint(0, len(X)-1))
         X_resampled = X[value_resampled,:]
         y_resampled = y[value_resampled]
-        gr_resampled = gr[value_resampled]
+        if gr == None:
+            gr_resampled = gr
+        else:
+            gr_resampled = gr[value_resampled]
 	         
         _, _, _, _, _, model, model_voxel = train_test_model(X_resampled, y_resampled, gr_resampled, splits=splits,test_size=test_size, n_components=n_components, random_seed=random_seed, print_verbose=False)
         resampling_coef.extend(model)

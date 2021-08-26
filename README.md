@@ -44,7 +44,7 @@ The completion of this project will require the following tool:
 
 ## Data
 
-The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera. Each participant completed 2 runs of 8 painful trials, resulting to 797 observations (after removing data with movement artefacs). 
+The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera. Each participant completed 2 runs of 8 painful trials, resulting to a total of 797 observations after removing data with movement artefacs (dataset 1: n = 533 observations; dataset 2: n = 264 observations). 
 
 <table>
    <tr>
@@ -99,7 +99,7 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 * primary motor area activity: the signal was extracted using [this mask](https://github.com/PSY6983-2021/picard_project/blob/main/masks/mask_BA4.nii).
 * whole-brain activity excluding the primary motor area: the signal was extracted using [this mask](https://github.com/PSY6983-2021/picard_project/blob/main/masks/mask_excluding_BA4.nii).
 
-The models were first trained on the first dataset using a 5-fold cross-validation procedure (Table 1) and tested on the second dataset (Table 2).
+The models were first trained on the first dataset (n = 533 observations) using a 5-fold cross-validation procedure (Table 1) and tested on the second dataset (n = 264 observations; Table 2).
 
 *Table 1: Performance metrics (R<sup>2</sup>) of the regression models averaged across the 5 folds for the train/validation sets*
 | Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |
@@ -119,9 +119,9 @@ The models were first trained on the first dataset using a 5-fold cross-validati
 
 | Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |
 | ----------|---------------|---------------|-------------- |
-| `Lasso` | -0.19 |  |  |
-| `Ridge` | -0.18 |  |  |
-| `SVR` |  |  |  |
+| `Lasso` | -0.19 | -0.46  | -0.20 |
+| `Ridge` | -0.18 | -0.56 | -0.22 |
+| `SVR` | -0.18 | -0.39 | -0.17 |
 
 ## Classifier model
 
@@ -132,7 +132,7 @@ A SVM classifier was computed to see if it is possible to predict which dataset 
 <img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/output/confusion_matrices_perc_across_fold.png" width="800px"/>
 </p>
 
-This result possibly highlights that the fMRI data in the two datasets come from different distributions. This might be due the different parameters used to acquire the fMRI data. The only divergent acquisition parameters were the number of whole-brain volumes acquired during each functional scan (170 volumes vs 160 volumes) and the voxel sizes (3.44 x 3.44 x 3.40 mm vs 3.4 x 3.4 x 3.4 mm). The averaged age of the participants was also different between the datasets (23.4 ± 2.5 years vs 36.0 ± 10.9 years). This age difference may have contributed to the high classification accuracy, although there is no clear evidence to support a difference in brain activity related to facial expression of pain according to different age groups in the litterature. 
+This result possibly highlights that the fMRI data in the two datasets come from different distributions. This might explained why the regression model computed on the first dataset performed so poorly on the test set (second dataset). The classification accuracy might be due the different parameters used to acquire the fMRI data. The only divergent acquisition parameters were the number of whole-brain volumes acquired during each functional scan (170 volumes vs 160 volumes) and the voxel sizes (3.44 x 3.44 x 3.40 mm vs 3.4 x 3.4 x 3.4 mm). The averaged age of the participants was also different between the datasets (23.4 ± 2.5 years vs 36.0 ± 10.9 years). This age difference may have contributed to the high classification accuracy, although there is no clear evidence to support a difference in brain activity related to facial expression of pain according to different age groups in the litterature. 
 
 ## Conclusion
 

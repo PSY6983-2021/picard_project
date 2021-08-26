@@ -105,7 +105,7 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 <br>[Link to the interactive violin plots](https://me-pic.github.io/BH2021_InteractiveViz/regression_violin_plots.html)
 
 **Visualization of the regression coefficients of the Lasso regression model:**
-<br>The averaged regression coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
+<br>The regression averaged coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
 <br>[Link to the interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
 
 *Performance of the trained model on the test sets (second dataset)*
@@ -114,7 +114,7 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 
 ## Classifier model
 
-A SVM classifier was run to see if it is possible to predict which dataset the fMRI data came from. The linear classifier was able to predict the dataset with an accuracy of 84.2 ± 1.6 %. 
+A SVM classifier was computed to see if it is possible to predict which dataset the fMRI data came from. The linear classifier was able to predict the dataset with an accuracy of 84.2 ± 1.6 %. 
 
 *Confusion matrices across the 5-fold cross-validation.* 
 <p align="center">
@@ -134,6 +134,9 @@ I would like to thank Pierre Bellec and the TAs who helped me overcome the vario
 * Andréanne
 * Désirée
 * François
+
+The html files for the interactive plots can found in [Marie-Eve Picard's github repository](https://github.com/me-pic/BH2021_InteractiveViz).
+<br>For any question and comments about the project, please contact me at marie-eve.picard.2@umontreal.ca.
 
 ## References
 

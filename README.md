@@ -103,6 +103,9 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 
 [Link to the interactive violin plots](https://me-pic.github.io/BH2021_InteractiveViz/regression_violin_plots.html)
 
+The averaged regression coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image. 
+[Link to the interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/)
+
 *Performance of the trained model on the test sets (second dataset)*
 
 :warning: Insert something

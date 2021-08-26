@@ -97,13 +97,6 @@ def main():
     filename_perm = f"permutation_output_{args.model}_{args.seed}.json"
     with open(filename_perm, 'w') as fp:
         json.dump(perm_dict, fp)
-
-    #compute bootstrap tests
-    resampling_coef = building_model.boostrap_test(X, y, gr, random_seed=args.seed)
-    filename_bootstrap = f"bootstrap_models_{args.model}_{args.seed}.pickle"
-    pickle_out = open(filename_bootstrap,"wb")
-    pickle.dump(resampling_coef, pickle_out)
-    pickle_out.close()
     
 
 if __name__ == "__main__":

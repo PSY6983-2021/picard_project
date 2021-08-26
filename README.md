@@ -73,6 +73,8 @@ By the end of this course, I will provide
 
 ## Overview
 
+This project was initiated by Marie-Eve Picard on 2nd August 2021 as part of the PSY6983 course. The final presentation of the project was delivered on 20th August 2021. All the deliverables were completed and can be found on this repository (see the Deliverables section below).
+
 ### Deliverables
 
 **Python scripts**
@@ -88,7 +90,7 @@ The requirements to run the python scripts can also found in the [scripts folder
 <br> The jupyter notebook containing the script to generate the figures can be found in the [notebook folder](https://github.com/PSY6983-2021/picard_project/tree/main/notebook).
 
 **Visualization of the results**
-<br> The png/html format of the figures generated in this project can be found in the [images/output subfolder](https://github.com/PSY6983-2021/picard_project/tree/main/images/output).
+<br> The png/html format of the figures generated in this project can be found in the [images/output subfolder](https://github.com/PSY6983-2021/picard_project/tree/main/images/output). The html files for the interactive plots can found in [Marie-Eve Picard's github repository](https://github.com/me-pic/BH2021_InteractiveViz).
 
 ## Regression models
 
@@ -106,7 +108,7 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 
 **Visualization of the regression coefficients of the Lasso regression model:**
 <br>The regression averaged coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
-<br>[Link to the interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
+<br>[Link to the 2D interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
 
 *Performance of the trained model on the test sets (second dataset)*
 
@@ -137,8 +139,7 @@ I would like to thank Pierre Bellec and the TAs who helped me overcome the vario
 * Désirée
 * François
 
-The html files for the interactive plots can found in [Marie-Eve Picard's github repository](https://github.com/me-pic/BH2021_InteractiveViz).
-<br>For any question and comments about the project, please contact me at marie-eve.picard.2@umontreal.ca.
+For any question and comments about the project, please contact me at marie-eve.picard.2@umontreal.ca.
 
 ## References
 

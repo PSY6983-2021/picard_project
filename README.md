@@ -101,7 +101,7 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 | `Ridge` | 0.20±0.06 | -0.42±0.22 | 0.17±0.05 |
 | `SVR` | 0.20±0.06 | -0.18±0.19 | 0.16±0.06 |
 
-Interactive plot: ⚠️ insert link to interactive plot
+[Link to the interactive violin plots](https://me-pic.github.io/BH2021_InteractiveViz/regression_violin_plots.html)
 
 *Performance of the trained model on the test sets (second dataset)*
 

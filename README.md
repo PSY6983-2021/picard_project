@@ -94,7 +94,12 @@ The requirements to run the python scripts can also found in the [scripts folder
 
 ## Regression models
 
-Regression algorithms combined with a principal component analysis (PCA) were used to determine if it is possible to predict FACS scores from fMRI data in healthy adults. Three different regression algorithms were compared (Lasso, Ridge, SVR) using three different inputs (whole-brain activity, primary motor area activity, whole-brain acitivity excluding the primary motor area). The models were first trained on the first dataset using a 5-fold cross-validation procedure (Table 1) and tested on the second dataset (Table 2).
+Regression algorithms combined with a principal component analysis (PCA) were used to determine if it is possible to predict FACS scores from fMRI data in healthy adults. Three different regression algorithms were compared ([`Lasso`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html), [`Ridge`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html), [`SVR`](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html)) using three different model inputs:
+* whole-brain activity: the signal was extracted using the MNI152 brain mask (see [NiftiMasker documentation](https://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html), mask_strategy='template').
+* primary motor area activity: the signal was extracted using [this mask](https://github.com/PSY6983-2021/picard_project/blob/main/masks/mask_BA4.nii).
+* whole-brain activity excluding the primary motor area: the signal was extracted using [this mask](https://github.com/PSY6983-2021/picard_project/blob/main/masks/mask_excluding_BA4.nii).
+
+The models were first trained on the first dataset using a 5-fold cross-validation procedure (Table 1) and tested on the second dataset (Table 2).
 
 *Table 1: Performance metrics (R<sup>2</sup>) of the regression models averaged across the 5 folds for the train/validation sets*
 | Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |

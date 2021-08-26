@@ -92,7 +92,7 @@ A SVM classifier was run to see if it is possible to predict which dataset the f
 
 *Confusion matrices across the 5-fold cross-validation.* 
 <p align="center">
-<img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/output/confusion_matrices_across_fold.png" width="800px"/>
+<img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/output/confusion_matrices_perc_across_fold.png" width="800px"/>
 </p>
 
 This result possibly highlights that the fMRI data in the two datasets come from different distributions. This might be due the different parameters used to acquire the fMRI data. The only divergent acquisition parameters were the number of whole-brain volumes acquired during each functional scan (170 volumes vs 160 volumes) and the voxel sizes (3.44 x 3.44 x 3.40 mm vs 3.4 x 3.4 x 3.4 mm). The averaged age of the participants was also different between the datasets (23.4 ± 2.5 years vs 36.0 ± 10.9 years). This age difference may have contributed to the high classification accuracy, although there is no clear evidence to support a difference in brain activity related to facial expression of pain according to different age groups in the litterature. 

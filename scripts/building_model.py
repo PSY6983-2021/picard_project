@@ -1,12 +1,10 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from random import seed
-from random import randint
 from sklearn.pipeline import Pipeline
 from sklearn.decomposition import PCA
 from sklearn.linear_model import Lasso, Ridge
-from sklearn.svm import SVR
+from sklearn.svm import SVR, SVC
 from sklearn.model_selection import train_test_split, GroupShuffleSplit, ShuffleSplit, permutation_test_score
 from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, explained_variance_score
 
@@ -117,7 +115,7 @@ def reg_PCA(n_component, reg = Lasso()):
 def train_test_model(X, y, gr=None, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
 
     """
-    Build and evaluate the regression model
+    Build and evaluate a regression model
     First compute the PCA and then fit the regression technique specified on the PCs scores
 
     Parameters
@@ -179,6 +177,8 @@ def train_test_model(X, y, gr=None, reg=Lasso(), splits=5,test_size=0.3, n_compo
 
 def train_test_classify(X, y, gr=None, C=1.0):
     """
+    Build and evaluate a classification model
+    
     Parameters
     ----------
     X: predictive variable
@@ -252,40 +252,24 @@ def compute_permutation(X, y, gr=None, n_components=0.80, n_permutations=5000, s
     return score, perm_scores, pvalue
 
 
-def boostrap_test(X, y, gr=None, splits=5, test_size=0.30, n_components=0.80, n_resampling=5000, random_seed=42):
+def predict_on_test(X_train, y_train, X_test, y_test, reg):
     """
+    Test the generability of a regression model on left out data
+    
     Parameters
     ----------
-    X: predictive variable
-    y: predicted variable
-    gr: grouping variable
-    splits: number of split for the cross-validation 
-    test_size: percentage of the data in the test set
-    n_components: number of components to keep for the PCA
-    n_resampling: number of samples with replacement
-    random_seed: controls the randomness
-
+    X_train: predictive variable to fit the model
+    y_train: predicted variable to fit the model
+    X_test: predictive variable to predict the model
+    y_test: predicted variable to predict the model
+    reg: regression technique to perform
+    
     Returns
     ----------
-    resampling_coef: list of arrays containing the coefficients for each voxel for each resampling
+    r2: metric to evaluate the performance of the model
     """
-    resampling_coef = []
-    #seed random generator
-    seed(random_seed)
-
-    for i in range(n_resampling):
-        value_resampled = []
-        #Create new sample
-        for _ in range(len(X)):
-	    value_resampled.append(randint(0, len(X)-1))
-        X_resampled = X[value_resampled,:]
-        y_resampled = y[value_resampled]
-        if gr == None:
-            gr_resampled = gr
-        else:
-            gr_resampled = gr[value_resampled]
-	         
-        _, _, _, _, _, model, model_voxel = train_test_model(X_resampled, y_resampled, gr_resampled, splits=splits,test_size=test_size, n_components=n_components, random_seed=random_seed, print_verbose=False)
-        resampling_coef.extend(model)
+    df_metrics = pd.DataFrame(columns=["r2", "mae", "mse", "rmse"])
+    final_model = reg.fit(X_train, y_train)
+    r2 = r2_score(y_test, final_model.predict(X_test))
     
-    return resampling_coef
+    return r2

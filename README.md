@@ -94,7 +94,7 @@ The requirements to run the python scripts can also found in the [scripts folder
 
 ## Classifier model
 
-A SVM classifier was run to see if it is possible to predict which dataset the fMRI data came from. The classifier was able to predict the dataset with an accuracy of 84.2 ± 1.6 %. 
+A SVM classifier was run to see if it is possible to predict which dataset the fMRI data came from. The linear classifier was able to predict the dataset with an accuracy of 84.2 ± 1.6 %. 
 
 *Confusion matrices across the 5-fold cross-validation.* 
 <p align="center">
@@ -104,6 +104,10 @@ A SVM classifier was run to see if it is possible to predict which dataset the f
 This result possibly highlights that the fMRI data in the two datasets come from different distributions. This might be due the different parameters used to acquire the fMRI data. The only divergent acquisition parameters were the number of whole-brain volumes acquired during each functional scan (170 volumes vs 160 volumes) and the voxel sizes (3.44 x 3.44 x 3.40 mm vs 3.4 x 3.4 x 3.4 mm). The averaged age of the participants was also different between the datasets (23.4 ± 2.5 years vs 36.0 ± 10.9 years). This age difference may have contributed to the high classification accuracy, although there is no clear evidence to support a difference in brain activity related to facial expression of pain according to different age groups in the litterature. 
 
 ## Conclusion
+
+The goals of this project were reached. I started this journey with some background in python coding, but during these past few weeks I learned some best practices in coding and how to organize scripts in a more efficient way. I applied different machine learning techniques on neuroimaging data (fMRI contrast images), such as regression and classification techniques. I also learned how to use some functions from the python plotly module.
+
+ 
 
 ## Acknowledgement
 

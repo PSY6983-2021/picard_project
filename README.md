@@ -127,6 +127,8 @@ This result possibly highlights that the fMRI data in the two datasets come from
 
 The goals of this project were reached. I started this journey with some background in python coding, but during these past few weeks I learned some best practices in coding and how to organize scripts in a more efficient way. I applied different machine learning techniques on neuroimaging data (fMRI contrast images), such as regression and classification techniques. I also learned how to use some functions from the python plotly module. I am also proud to have learned how to perform analysis on Compute Canada, with the help of the TAs.
 
+This project will be continued as part of my master's project. Stay tuned ! 👀:brain::computer:
+
 ## Acknowledgement
 
 I would like to thank Pierre Bellec and the TAs who helped me overcome the various challenges I faced during this course:

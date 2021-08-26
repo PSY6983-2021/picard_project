@@ -110,9 +110,13 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 <br>The regression averaged coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
 <br>[Link to the 2D interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
 
-*Performance of the trained model on the test sets (second dataset)*
+*Performance (R<sup>2</sup>) of the trained models on the test sets (second dataset)*
 
-:warning: Insert something
+| Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |
+| ----------|---------------|---------------|-------------- |
+| `Lasso` | -0.19 |  |  |
+| `Ridge` | -0.18 |  |  |
+| `SVR` |  |  |  |
 
 ## Classifier model
 

@@ -46,10 +46,16 @@ The completion of this project will require the following tool:
 
 The dataset that will be used for this project is a secondary private dataset (not open access yet). It includes 55 participants (women = 28, men = 27) aged between 18 and 53 years old. Moderately painful stimuli were applied while they where in the MRI scanner. Their facial expression was recorded during this time by the use of a MRI-compatible camera. Each participant completed 2 runs of 8 painful trials, resulting to 797 observations (after removing data with movement artefacs). 
 
-*Illustration of the experimental paradigme.*
-<p align="center">
-<img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/exp_paradigme.png" width="300px"/>
-</p>
+<table>
+   <tr>
+    <td>Illustration of the experimental paradigme.</td>
+    <td>Distribution of the FACS scores across the datasets</td>
+  </tr> 
+  <tr>
+    <td><img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/exp_paradigme.png"  alt="1" width = 360px height = 360px ></td>
+    <td><img src="https://github.com/PSY6983-2021/picard_project/blob/main/images/output/FACS_distribution.png" alt="2" width = 360px height = 360px></td>
+  </tr> 
+</table>
 
 ## Deliverables
 
@@ -73,7 +79,7 @@ By the end of this course, I will provide
 <br> Four python scripts can be found in the [scripts folder](https://github.com/PSY6983-2021/picard_project/tree/main/scripts):
 * [main.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/main.py) : main script calling functions in prepping_data.py and building_model.py. This script also includes code to save the train and test sets (in numpy format), the coefficients of the regression model (in nii.gz format), the model (in pickle format), the output of the permutation test (in json format) and the bootstrap test (in pickle format).
 * [data_to_json.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/data_to_json.py) : script to save the fmri data (predictive variable), the target variable (predicted variable) and the group variable (for non iid data: multiple observations per participant, optional) in json format.
-* [prepping_data.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/prepping_data.py) : script to load data in Nifti-like format and to extract the signal according to a nilearn pre-defined mask or to a pre-computed mask.
+* [prepping_data.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/prepping_data.py) : script to load the fMRI data in Nifti-like format and to extract the signal according to a nilearn pre-defined mask or to a pre-computed mask.
 * [building_model.py](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/building_model.py) : script to compute the regression model, the permutation test and the bootstrap test. 
 
 The requirements to run the python scripts can also found in the [scripts folder](https://github.com/PSY6983-2021/picard_project/tree/main/scripts) in the [requirements.txt](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/requirements.txt) file. See also the [scripts_instruction.txt](https://github.com/PSY6983-2021/picard_project/blob/main/scripts/scripts_instruction.txt) for more details.

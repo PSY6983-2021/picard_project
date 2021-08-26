@@ -94,7 +94,7 @@ The requirements to run the python scripts can also found in the [scripts folder
 
 Regression algorithms combined with a principal component analysis (PCA) were used to determine if it is possible to predict FACS scores from fMRI data in healthy adults. Three different regression algorithms were compared (Lasso, Ridge, SVR) using three different inputs (whole-brain activity, primary motor area activity, whole-brain acitivity excluding the primary motor area). The models were first trained on the first dataset using a 5-fold cross-validation procedure and tested on the second dataset.
 
-*Table 1: Performance metrics (R<sup>2</sup>) of the regression models across the 5 folds for the train/validation sets*
+*Table 1: Performance metrics (R<sup>2</sup>) of the regression models averaged across the 5 folds for the train/validation sets*
 | Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |
 | ----------|---------------|---------------|-------------- |
 | `Lasso` | 0.19±0.06 | -0.30±0.16 | 0.18±0.03 |

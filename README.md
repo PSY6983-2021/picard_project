@@ -97,9 +97,9 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 *Table 1: Performance metrics (R<sup>2</sup>) of the regression models across the 5 folds for the train/validation sets*
 | Algorithm | Whole-brain | Primary motor area (M1) | Whole-brain excluding M1 |
 | ----------|---------------|---------------|-------------- |
-| `Lasso` | 0.19 | -0.30 | 0.18 |
-| `Ridge` | 0.20 | -0.42 | 0.17 |
-| `SVR` | 0.20 | -0.18 | 0.16 |
+| `Lasso` | 0.19±0.06 | -0.30±0.16 | 0.18±0.03 |
+| `Ridge` | 0.20±0.06 | -0.42±0.22 | 0.17±0.05 |
+| `SVR` | 0.20±0.06 | -0.18±0.19 | 0.16±0.06 |
 
 Interactive plot: ⚠️ insert link to interactive plot
 

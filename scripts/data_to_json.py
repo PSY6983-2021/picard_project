@@ -56,7 +56,7 @@ def check_order(dataframe, column, filenames, extension=".hdr"):
     return order
 
 
-def save_to_json(dataframe, ID, target, group, files, save_name):
+def save_to_json(dataframe, ID, target, group = None, files, save_name):
     """
     Create and save a json file containing the relative path of the hdr fmri files,
     the target variable and the group variable
@@ -66,7 +66,7 @@ def save_to_json(dataframe, ID, target, group, files, save_name):
     dataframe: behavioral dataframe
     ID (string): name of the column in dataframe containing the ID variable
     target (string): name of the column in dataframe containing the target variable
-    group (string): name of the column in dataframe containing the group variable
+    group (string): name of the column in dataframe containing the group variable 
     files: list of hdr file paths
     save_name (string): name of the file to create
     """
@@ -75,8 +75,11 @@ def save_to_json(dataframe, ID, target, group, files, save_name):
         for i in range(len(files)):
             files[i]=files[i][idx+1:]
             files[i]=root+files[i]
-
-        FEPS_data = {"target": dataframe[target].to_list(), "group": dataframe[group].to_list(), "data": files}
+        if group == None:
+            FEPS_data = {"target": dataframe[target].to_list(), "group": group, "data": files}
+        else:
+            FEPS_data = {"target": dataframe[target].to_list(), "group": dataframe[group].to_list(), "data": files}
+        
         with open(save_name, 'w') as fp:
                 json.dump(FEPS_data, fp)
     else: 

@@ -101,10 +101,12 @@ Regression algorithms combined with a principal component analysis (PCA) were us
 | `Ridge` | 0.20±0.06 | -0.42±0.22 | 0.17±0.05 |
 | `SVR` | 0.20±0.06 | -0.18±0.19 | 0.16±0.06 |
 
-[Link to the interactive violin plots](https://me-pic.github.io/BH2021_InteractiveViz/regression_violin_plots.html)
+**Visualization of the R<sup>2</sup> violin plots:**
+<br>[Link to the interactive violin plots](https://me-pic.github.io/BH2021_InteractiveViz/regression_violin_plots.html)
 
-The averaged regression coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image. 
-[Link to the interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/)
+**Visualization of the regression coefficients of the Lasso regression model:**
+<br>The averaged regression coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
+<br>[Link to the interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
 
 *Performance of the trained model on the test sets (second dataset)*
 

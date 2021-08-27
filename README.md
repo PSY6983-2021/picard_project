@@ -114,6 +114,7 @@ The models were first trained on the first dataset (n = 533 observations) using 
 **Visualization of the regression coefficients of the Lasso regression model:**
 <br>The regression averaged coefficients across folds were plotted on the brain using the 99-th percentile of the absolute value in the image.
 <br>[Link to the 2D interactive brain plot](https://me-pic.github.io/BH2021_InteractiveViz/coefs_reg_LASSO.html)
+![](https://github.com/PSY6983-2021/picard_project/blob/main/images/output/visualization_3D_brain.gif)
 
 *Table 2: Performance metrics (R<sup>2</sup>) of the final regression models tested on the second dataset*
 
@@ -147,6 +148,8 @@ I would like to thank Pierre Bellec and the TAs who helped me overcome the vario
 * Andréanne
 * Désirée
 * François
+
+A special mention to Catherine Landry for the shared coffees and the moral suppport.
 
 For any question and comments about the project, please contact me at marie-eve.picard.2@umontreal.ca.
 

@@ -219,7 +219,7 @@ def train_test_classify(X, y, gr, C=1.0):
     return X_train, y_train, X_test, y_test, y_pred, model, accuracy
 
 
-def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
+def compute_permutation(X, y, gr, reg, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
     """
     Compute the permutation test for a specified metric (r2 by default)
     Apply the PCA after the splitting procedure
@@ -247,7 +247,7 @@ def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scorin
     else:    
         cv = GroupShuffleSplit(n_splits = 5, test_size = 0.3, random_state = random_seed)
     
-    score, perm_scores, pvalue = permutation_test_score(estimator=LASSO_PCR(n_components), X=X, y=y, groups= gr, scoring=scoring, cv=cv, n_permutations=n_permutations, random_state=42)
+    score, perm_scores, pvalue = permutation_test_score(estimator=reg_PCA(n_components,reg=reg), X=X, y=y, groups= gr, scoring=scoring, cv=cv, n_permutations=n_permutations, random_state=42)
     
     return score, perm_scores, pvalue
 

@@ -44,12 +44,13 @@ def check_order(dataframe, column, filenames, extension=".hdr"):
     order: either or not the behavioral file and the functional images are in the same order (boolean)
     """
     order = True
+    ls_ID = dataframe[column].tolist()
     
     for i, filename in enumerate(filenames):
-        if os.path.basename(filename[:-len(extension)]) != dataframe[column][i]:
+        if os.path.basename(filename[:-len(extension)]) != ls_ID[i]:
             print("Error in the files order")
             print(os.path.basename(filename[:-len(extension)]))
-            print(dataframe[column][i])
+            print(ls_ID[i])
             order=False
             break
             

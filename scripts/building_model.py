@@ -6,10 +6,10 @@ from sklearn.decomposition import PCA
 from sklearn.linear_model import Lasso, Ridge
 from sklearn.svm import SVR, SVC
 from sklearn.model_selection import train_test_split, GroupShuffleSplit, ShuffleSplit, permutation_test_score
-from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, explained_variance_score
+from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error, accuracy_score
 
 
-def split_data(X,Y,group=None,procedure):
+def split_data(X,Y,group,procedure):
     """
     Split the data according to the group parameters
     to ensure that the train and test sets are completely independent
@@ -112,7 +112,7 @@ def reg_PCA(n_component, reg = Lasso()):
     return pipe
 
 
-def train_test_model(X, y, gr=None, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
+def train_test_model(X, y, gr, reg=Lasso(), splits=5,test_size=0.3, n_components=0.80, random_seed=42, print_verbose=True):
 
     """
     Build and evaluate a regression model
@@ -175,7 +175,7 @@ def train_test_model(X, y, gr=None, reg=Lasso(), splits=5,test_size=0.3, n_compo
     return X_train, y_train, X_test, y_test, y_pred, model, model_voxel
 
 
-def train_test_classify(X, y, gr=None, C=1.0):
+def train_test_classify(X, y, gr, C=1.0):
     """
     Build and evaluate a classification model
     
@@ -219,7 +219,7 @@ def train_test_classify(X, y, gr=None, C=1.0):
     return X_train, y_train, X_test, y_test, y_pred, model, accuracy
 
 
-def compute_permutation(X, y, gr=None, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
+def compute_permutation(X, y, gr, n_components=0.80, n_permutations=5000, scoring="r2", random_seed=42):
     """
     Compute the permutation test for a specified metric (r2 by default)
     Apply the PCA after the splitting procedure
